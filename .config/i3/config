@@ -1,0 +1,279 @@
+# ~/.config/i3/config
+
+# Mod key (Win key)
+set $mod Mod4
+
+# Font (includes FontAwesome for icons)
+font pango:JetBrains Mono Bold, FontAwesome 11
+
+# Neobrutalist colors - FIXED to black/white theme
+set $bg-color            #2a687a
+set $inactive-bg-color   #f9b409
+set $text-color          #ffffff
+set $inactive-text-color #666666
+set $urgent-bg-color     #ff0000
+set $accent              #ffffff
+
+# Window styling - neobrutalist
+default_border pixel 5
+default_floating_border pixel 5
+
+# Gaps configuration for i3 v4.22+
+gaps inner 20
+gaps outer 10
+# Smart gaps - use 'on' instead of 'off'
+smart_gaps on
+# Smart borders - use 'on' or 'no_gaps' instead of 'off'
+smart_borders on
+
+
+bindsym $mod+g gaps inner current plus 5
+bindsym $mod+Shift+g gaps inner current minus 5
+
+# Force borders on all windows
+for_window [class=".*"] border pixel 5
+
+# Window colors - stark white borders for focused windows
+# class                 border    backgr.   text                 indicator child_border
+client.focused          $accent   $bg-color $text-color          $accent   $accent
+client.focused_inactive #666666   $bg-color $inactive-text-color #666666   #666666
+client.unfocused        #333333   $bg-color $inactive-text-color #333333   #333333
+client.urgent           $urgent-bg-color $urgent-bg-color $text-color $urgent-bg-color $urgent-bg-color
+
+# Background color
+client.background       $bg-color
+
+# Autostart
+exec --no-startup-id ~/.config/i3/trackpad-setup.sh
+
+exec_always --no-startup-id ~/.config/polybar/launch.sh
+# Status bar - using i3blocks
+#bar {
+#    status_command i3blocks -c ~/.config/i3/i3blocks.conf
+#    position top
+#    colors {
+#        background $bg-color
+#        statusline $text-color
+#        separator #666666
+#        
+#        # class            border    backgr.   text
+#        focused_workspace  $accent   $accent   $bg-color
+#        active_workspace   #333333   $bg-color $text-color
+#        inactive_workspace $bg-color $bg-color $inactive-text-color
+#        urgent_workspace   $urgent-bg-color $urgent-bg-color $text-color
+#    }
+#}
+exec --no-startup-id dunst
+exec --no-startup-id nm-applet
+exec --no-startup-id blueman-applet
+exec --no-startup-id ~/.local/bin/clipboard-sync.sh
+exec --no-startup-id libinput-gestures-setup start
+exec --no-startup-id redshift -P -O 4500
+exec --no-startup-id xsetroot -cursor_name left_ptr
+exec --no-startup-id xsetroot -solid '#d27242'
+# Picom commented out for better performance
+# exec --no-startup-id picom --config ~/.config/picom/picom.conf
+
+# === WORKSPACE AUTOSTART APPLICATIONS ===
+# Workspace 1: Two terminals
+exec --no-startup-id i3-msg 'workspace 1; exec alacritty'
+exec --no-startup-id i3-msg 'workspace 1; exec alacritty'
+
+# Workspace 2: Firefox
+exec --no-startup-id i3-msg 'workspace 2; exec firefox'
+
+# Workspace 3: VS Code
+exec --no-startup-id i3-msg 'workspace 3; exec code'
+
+# Return to workspace 1 after startup
+exec --no-startup-id i3-msg 'workspace 1'
+
+# Popular keybindings
+bindsym $mod+Return exec alacritty
+bindsym $mod+Shift+q kill
+bindsym $mod+d exec --no-startup-id rofi -show drun -theme ~/.config/rofi/neobrutalist.rasi
+
+# File manager (ranger)
+bindsym $mod+Shift+f exec alacritty -e ranger
+
+# Screenshots
+bindsym Print exec --no-startup-id maim ~/Pictures/screenshot-$(date +%s).png
+bindsym $mod+Print exec --no-startup-id maim -s ~/Pictures/screenshot-$(date +%s).png
+bindsym $mod+Shift+Print exec --no-startup-id maim -s | xclip -selection clipboard -t image/png
+
+# Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+# Brightness controls
+bindsym XF86MonBrightnessUp exec --no-startup-id light -A 10
+bindsym XF86MonBrightnessDown exec --no-startup-id light -U 10
+
+# Media controls
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
+
+# Window navigation (vim-style)
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# Arrow key navigation
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Window movement
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# Arrow key movement (using Mod+Ctrl+Shift for moving windows)
+bindsym $mod+Ctrl+Shift+Left move left
+bindsym $mod+Ctrl+Shift+Down move down
+bindsym $mod+Ctrl+Shift+Up move up
+bindsym $mod+Ctrl+Shift+Right move right
+
+# === WORKSPACE NAVIGATION WITH ARROW KEYS ===
+# Move to next/previous workspace with Mod+Shift+Arrow
+bindsym $mod+Shift+Left workspace prev
+bindsym $mod+Shift+Right workspace next
+
+# Optional: Add wrapping navigation (10 -> 1, 1 -> 10)
+bindsym $mod+Ctrl+Left workspace prev_on_output
+bindsym $mod+Ctrl+Right workspace next_on_output
+
+# Window resizing
+bindsym $mod+Ctrl+h resize shrink width 10 px
+bindsym $mod+Ctrl+j resize grow height 10 px
+bindsym $mod+Ctrl+k resize shrink height 10 px
+bindsym $mod+Ctrl+l resize grow width 10 px
+
+# Resize mode
+mode "resize" {
+    bindsym h resize shrink width 10 px or 10 ppt
+    bindsym j resize grow height 10 px or 10 ppt
+    bindsym k resize shrink height 10 px or 10 ppt
+    bindsym l resize grow width 10 px or 10 ppt
+    
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
+    
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# Workspaces
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+# === WORKSPACE ASSIGNMENTS ===
+# Auto-assign applications to specific workspaces
+assign [class="Alacritty"] $ws1
+assign [class="firefox"] $ws2
+assign [class="Firefox"] $ws2
+assign [class="Code"] $ws3
+assign [class="code-oss"] $ws3
+
+# Layouts
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# Split orientation
+bindsym $mod+c split h
+bindsym $mod+v split v
+
+# Fullscreen
+bindsym $mod+f fullscreen toggle
+
+# Floating
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+
+# Floating window rules
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [class="Pavucontrol"] floating enable
+
+# === ENHANCED FLOATING RULES FOR NEOBRUTALIST STYLE ===
+# Make specific windows float with custom sizes
+for_window [class="feh"] floating enable
+for_window [class="mpv"] floating enable
+for_window [class="Thunar"] floating enable, resize set 1000 700
+for_window [class="Nitrogen"] floating enable
+for_window [class="Lxappearance"] floating enable
+
+# Scratchpad
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+
+# Lock screen
+bindsym $mod+Shift+x exec --no-startup-id i3lock -c 000000
+
+# System menu
+bindsym $mod+Shift+e exec --no-startup-id ~/.config/i3/power-menu.sh
+
+# Reload/restart
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+
+# Exit i3
+bindsym $mod+Shift+Escape exec "i3-nagbar -t warning -m 'Exit i3?' -B 'Yes' 'i3-msg exit'"
+
+# Focus follows mouse
+focus_follows_mouse no
+
+# Don't move mouse on focus change
+mouse_warping none
+
+# Workspace back and forth
+workspace_auto_back_and_forth yes
+bindsym $mod+Tab workspace back_and_forth
+
+# === ADDITIONAL OPTIMIZATIONS ===
+# Smart borders (only show borders when necessary)
+hide_edge_borders smart
+
+# Set default layout for workspace 1 (for two terminals)
+# Uncomment the line below after creating workspace-1.json
+# exec --no-startup-id "i3-msg 'workspace 1; append_layout ~/.config/i3/workspace-1.json'"

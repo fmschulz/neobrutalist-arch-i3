@@ -1,0 +1,43 @@
+configuration {
+    font: "JetBrains Mono Bold 14";
+}
+
+* {
+    black:      rgba(0,0,0,100%);
+    white:      rgba(255,255,255,100%);
+    gray:       rgba(51,51,51,100%);
+    darkgray:   rgba(10,10,10,100%);
+    
+    background-color: var(black);
+    text-color:       var(white);
+}
+
+window {
+    width:      800px;
+    padding:    30px;
+    border:     5px solid;
+    border-color: var(white);
+}
+
+inputbar {
+    padding:    15px;
+    background-color: var(darkgray);
+    border:     3px solid;
+    border-color: var(white);
+}
+
+listview {
+    lines:      10;
+    spacing:    10px;
+}
+
+element {
+    padding:    15px;
+    border:     2px solid;
+    border-color: var(gray);
+}
+
+element selected {
+    background-color: var(white);
+    text-color:       var(black);
+}

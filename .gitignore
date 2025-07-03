@@ -1,0 +1,32 @@
+# Temporary files
+*.tmp
+*.swp
+*.swo
+*~
+
+# Backup files
+*.bak
+*.backup
+
+# Log files
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Editor directories
+.vscode/
+.idea/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Node
+node_modules/
+
+# Build outputs
+build/
+dist/

@@ -6,5 +6,5 @@ export TERM=xterm-256color
 
 # Launch alacritty with dedicated ranger config
 alacritty \
-    --config-file ~/.config/alacritty/ranger.toml \
+    --config-file ~/.config/alacritty/ranger.yml \
     -e ranger "$@"

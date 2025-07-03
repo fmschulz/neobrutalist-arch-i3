@@ -1,0 +1,17 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Ranger (Neobrutalist)
+Comment=File manager with neobrutalist styling
+Exec=alacritty --config-file %h/.config/alacritty/ranger.yml -e ranger
+Icon=utilities-file-manager
+Terminal=false
+Categories=System;FileTools;FileManager;
+MimeType=inode/directory;
+StartupNotify=true
+Keywords=file;manager;explorer;browser;neobrutalist;
+Actions=new-window;
+
+[Desktop Action new-window]
+Name=New Ranger Window
+Exec=alacritty --config-file %h/.config/alacritty/ranger.yml -e ranger

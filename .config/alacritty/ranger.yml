@@ -3,8 +3,8 @@
 
 window:
   padding:
-    x: 25
-    y: 25
+    x: 40
+    y: 40
   decorations: none
   opacity: 1.0
   title: "Ranger - Neobrutalist File Manager"
@@ -19,7 +19,10 @@ font:
   italic:
     family: "JetBrains Mono"
     style: Bold
-  size: 24.0
+  size: 36.0
+  offset:
+    x: 0
+    y: 2
 
 colors:
   primary:

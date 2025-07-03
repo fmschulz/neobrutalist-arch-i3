@@ -1,0 +1,16 @@
+[Desktop Entry]
+Type=Application
+Name=ranger
+Comment=File manager with neobrutalist styling and large fonts
+Icon=utilities-file-manager
+Terminal=false
+Exec=alacritty --config-file %h/.config/alacritty/ranger.yml -e ranger
+Categories=System;FileTools;FileManager;
+MimeType=inode/directory;
+Keywords=File;Manager;Browser;Explorer;Launcher;Vi;Vim;Python;neobrutalist;
+StartupNotify=true
+Actions=new-window;
+
+[Desktop Action new-window]
+Name=New Ranger Window
+Exec=alacritty --config-file %h/.config/alacritty/ranger.yml -e ranger

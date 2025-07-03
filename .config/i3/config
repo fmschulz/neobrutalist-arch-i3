@@ -85,8 +85,14 @@ exec --no-startup-id i3-msg 'workspace 2; exec firefox'
 # Workspace 3: VS Code
 exec --no-startup-id i3-msg 'workspace 3; exec code'
 
-# Workspace 5: System monitoring (btop)
-exec --no-startup-id i3-msg 'workspace 5; exec alacritty -e btop'
+# Workspace 4: System monitoring (btop)
+exec --no-startup-id i3-msg 'workspace 4; exec alacritty -e btop'
+
+# Workspace 5: Chrome browser
+exec --no-startup-id i3-msg 'workspace 5; exec google-chrome-stable'
+
+# Workspace 6: Ranger file manager
+exec --no-startup-id i3-msg 'workspace 6; exec alacritty -e ranger'
 
 # Return to workspace 1 after startup
 exec --no-startup-id i3-msg 'workspace 1'

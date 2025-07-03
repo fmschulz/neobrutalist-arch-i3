@@ -76,12 +76,16 @@ yay -S libinput-gestures pixi-bin
 
 1. **Claude Code**: Install via their official method, not through pacman
 2. **Visual Studio Code**: Use `code` (OSS build) or download the official binary
-3. **Docker**: Remember to add your user to the docker group:
+3. **Google Chrome**: Install from AUR:
+   ```bash
+   yay -S google-chrome
+   ```
+4. **Docker**: Remember to add your user to the docker group:
    ```bash
    sudo usermod -aG docker $USER
    ```
-4. **TLP**: For laptops only. Disable if using a desktop. May conflict with other power managers.
-5. **LightDM**: Optional - only if you want a graphical login screen
+5. **TLP**: For laptops only. Disable if using a desktop. May conflict with other power managers.
+6. **LightDM**: Optional - only if you want a graphical login screen
 
 <details>
 <summary>📋 Complete Package List</summary>
@@ -227,8 +231,13 @@ startx
 │   └── neobrutalist.rasi   # Custom neobrutalist theme
 ├── picom/
 │   └── picom.conf          # Compositor settings
-└── nitrogen/
-    └── nitrogen.cfg        # Wallpaper configuration
+├── nitrogen/
+│   └── nitrogen.cfg        # Wallpaper configuration
+└── ranger/
+    ├── rc.conf             # Ranger configuration
+    ├── scope.sh            # Preview script
+    └── colorschemes/
+        └── neobrutalist.py # Custom neobrutalist theme
 ```
 
 ## 🎨 Customization
@@ -295,7 +304,9 @@ default_border pixel 5    # Border width
 - Workspace 1: Two terminal windows
 - Workspace 2: Firefox
 - Workspace 3: VS Code
-- Workspace 5: btop (system monitor)
+- Workspace 4: btop (system monitor)
+- Workspace 5: Google Chrome
+- Workspace 6: Ranger file manager
 
 ### Special Features
 
@@ -355,6 +366,36 @@ The configuration includes performance optimizations:
 - Minimal polybar modules
 
 ## 📝 Additional Setup
+
+### Ranger File Manager
+
+Ranger comes with a custom neobrutalist colorscheme that matches the overall aesthetic:
+
+**Features:**
+- Stark black/white color scheme with bold highlights
+- Thick borders around columns (`draw_borders both`)
+- Selected items have inverted colors (white background, black text)
+- Directory names in bold white
+- Executable files in bold green
+- Media files in yellow/cyan
+- Git integration with color-coded status
+
+**Key Bindings:**
+- `gd` - Go to Documents
+- `gD` - Go to Downloads  
+- `gc` - Go to .config
+- `<backspace>` - Toggle hidden files
+- `ee` - Edit in vim
+- `ec` - Edit in VS Code
+- `ez` - Open in zathura
+
+The ranger configuration includes:
+- Custom neobrutalist colorscheme
+- Enhanced preview script with syntax highlighting
+- Image previews using ueberzug
+- Archive previews
+- PDF text previews
+- Video thumbnails
 
 ### Zathura Configuration
 

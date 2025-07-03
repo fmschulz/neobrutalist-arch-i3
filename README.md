@@ -112,6 +112,8 @@ yay -S libinput-gestures pixi-bin
 - `ranger` - Terminal file manager
 - `highlight` - Source code syntax highlighting for ranger preview
 - `w3m` - Terminal web browser for ranger image preview
+- `btop` - Resource monitor (auto-starts on workspace 5)
+- `pacman-contrib` - Tools for pacman (includes paccache for cache cleaning)
 
 #### Document Viewers
 - `zathura` - Minimalist PDF/document viewer
@@ -289,6 +291,12 @@ default_border pixel 5    # Border width
 | `Mod + 1-9` | Switch to workspace |
 | `Mod + Shift + 1-9` | Move window to workspace |
 
+**Default Workspace Applications:**
+- Workspace 1: Two terminal windows
+- Workspace 2: Firefox
+- Workspace 3: VS Code
+- Workspace 5: btop (system monitor)
+
 ### Special Features
 
 | Key Combination | Action |
@@ -388,6 +396,38 @@ sudo systemctl enable docker.service
 sudo systemctl start docker.service
 
 # Log out and back in for group changes to take effect
+```
+
+### Automated System Updates
+
+This configuration includes an optional automated update system using systemd timers:
+
+```bash
+# During installation, you'll be prompted to set up automated updates
+# Or run manually:
+cd ~/.config/i3/
+./setup-auto-update.sh
+```
+
+Features:
+- Weekly updates every Sunday at 3:00 AM (randomized by up to 1 hour)
+- Automatic package cache cleaning (keeps last 2 versions)
+- Update logs stored in `/var/log/arch-updates.log`
+- Systemd journal integration
+
+To manage automated updates:
+```bash
+# Check timer status
+sudo systemctl status arch-update.timer
+
+# View next scheduled run
+sudo systemctl list-timers arch-update.timer
+
+# View update logs
+sudo journalctl -u arch-update.service
+
+# Disable automated updates
+sudo systemctl disable arch-update.timer
 ```
 
 ### Bluetooth Audio

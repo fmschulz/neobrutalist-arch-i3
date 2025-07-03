@@ -100,6 +100,8 @@ install_packages() {
         "npm"
         "uv"
         "quarto"
+        "btop"
+        "pacman-contrib"
     )
     
     # Optional packages
@@ -303,6 +305,25 @@ setup_services() {
     fi
 }
 
+# Function to set up automated updates
+setup_auto_updates() {
+    print_info "Would you like to set up automated weekly Arch Linux updates?"
+    echo "This will create a systemd timer to update your system every Sunday at 3 AM"
+    read -p "Set up automated updates? (y/N) " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        print_info "Setting up automated updates..."
+        cd .config/i3/
+        if [ -f "setup-auto-update.sh" ]; then
+            ./setup-auto-update.sh
+            print_success "Automated updates configured"
+        else
+            print_warning "Auto-update setup script not found"
+        fi
+        cd ../..
+    fi
+}
+
 # Main installation flow
 main() {
     # Check if running from correct directory
@@ -327,6 +348,9 @@ main() {
     
     # Step 5: Set up services
     setup_services
+    
+    # Step 6: Set up automated updates (optional)
+    setup_auto_updates
     
     # Success message
     echo

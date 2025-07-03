@@ -85,6 +85,9 @@ exec --no-startup-id i3-msg 'workspace 2; exec firefox'
 # Workspace 3: VS Code
 exec --no-startup-id i3-msg 'workspace 3; exec code'
 
+# Workspace 5: System monitoring (btop)
+exec --no-startup-id i3-msg 'workspace 5; exec alacritty -e btop'
+
 # Return to workspace 1 after startup
 exec --no-startup-id i3-msg 'workspace 1'
 

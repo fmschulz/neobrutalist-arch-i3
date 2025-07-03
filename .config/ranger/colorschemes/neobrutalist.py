@@ -8,14 +8,14 @@ class Neobrutalist(ColorScheme):
     progress_bar_color = white
 
     def use(self, context):
-        fg, bg, attr = white, black, bold  # Default: bold white on black
+        fg, bg, attr = white, default, bold  # Default: bold white on terminal default
 
         if context.reset:
-            return white, black, bold
+            return white, default, bold
 
         elif context.in_browser:
-            # Force black background for all browser contexts
-            bg = black
+            # Use terminal default background
+            bg = default
             attr = bold  # Everything is bold by default
             
             if context.selected:
@@ -28,7 +28,7 @@ class Neobrutalist(ColorScheme):
                 
             if context.empty or context.error:
                 fg = red
-                bg = black
+                bg = default
                 attr = bold
                 
             if context.border:
@@ -90,11 +90,11 @@ class Neobrutalist(ColorScheme):
                     
             if context.badinfo:
                 fg = red
-                bg = black
+                bg = default
                 attr = bold
 
         elif context.in_titlebar:
-            bg = black
+            bg = default
             fg = white
             attr = bold
             
@@ -111,14 +111,14 @@ class Neobrutalist(ColorScheme):
                     attr = bold
                 else:
                     fg = white
-                    bg = black
+                    bg = default
                     attr = bold
             elif context.link:
                 fg = cyan
                 attr = bold
 
         elif context.in_statusbar:
-            bg = black
+            bg = default
             fg = white
             attr = bold
             
@@ -128,11 +128,11 @@ class Neobrutalist(ColorScheme):
                     attr = bold
                 elif context.bad:
                     fg = red
-                    bg = black
+                    bg = default
                     attr = bold
             if context.marked:
                 fg = yellow
-                bg = black
+                bg = default
                 attr = bold | reverse
             if context.message:
                 if context.bad:
@@ -157,7 +157,7 @@ class Neobrutalist(ColorScheme):
                 attr |= reverse
 
         if context.in_taskview:
-            bg = black
+            bg = default
             fg = white
             attr = bold
             
@@ -176,7 +176,7 @@ class Neobrutalist(ColorScheme):
                     bg = white
                 else:
                     fg = white
-                    bg = black
+                    bg = default
                 attr = bold
 
         # Version control with bold styling

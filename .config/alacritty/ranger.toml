@@ -1,0 +1,41 @@
+# Alacritty configuration specifically for Ranger
+# Large fonts and neobrutalist styling
+
+[window]
+padding = { x = 25, y = 25 }
+decorations = "None"
+opacity = 1.0
+title = "Ranger - Neobrutalist File Manager"
+
+[font]
+size = 22.0
+normal = { family = "JetBrains Mono", style = "ExtraBold" }
+bold = { family = "JetBrains Mono", style = "ExtraBold" }
+italic = { family = "JetBrains Mono", style = "ExtraBold" }
+
+[colors.primary]
+background = "#000000"
+foreground = "#ffffff"
+
+[colors.normal]
+black = "#000000"
+red = "#ff0000"
+green = "#00ff00"
+yellow = "#ffff00"
+blue = "#0000ff"
+magenta = "#ff00ff"
+cyan = "#00ffff"
+white = "#ffffff"
+
+[colors.bright]
+black = "#333333"
+red = "#ff5555"
+green = "#55ff55"
+yellow = "#ffff55"
+blue = "#5555ff"
+magenta = "#ff55ff"
+cyan = "#55ffff"
+white = "#ffffff"
+
+[selection]
+save_to_clipboard = true

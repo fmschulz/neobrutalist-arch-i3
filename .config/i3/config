@@ -92,7 +92,7 @@ exec --no-startup-id i3-msg 'workspace 4; exec alacritty -e btop'
 exec --no-startup-id i3-msg 'workspace 5; exec google-chrome-stable'
 
 # Workspace 6: Ranger file manager (large font for better visibility)
-exec --no-startup-id i3-msg 'workspace 6; exec alacritty --option font.size=18 --option font.normal.family="JetBrains Mono" --option font.normal.style="ExtraBold" -e ranger'
+exec --no-startup-id i3-msg 'workspace 6; exec alacritty --config-file ~/.config/alacritty/ranger.toml -e ranger'
 
 # Return to workspace 1 after startup
 exec --no-startup-id i3-msg 'workspace 1'
@@ -103,7 +103,7 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec --no-startup-id rofi -show drun -theme ~/.config/rofi/neobrutalist.rasi
 
 # File manager (ranger) with large font
-bindsym $mod+Shift+f exec alacritty --option font.size=18 --option font.normal.family="JetBrains Mono" --option font.normal.style="ExtraBold" -e ranger
+bindsym $mod+Shift+f exec alacritty --config-file ~/.config/alacritty/ranger.toml -e ranger
 
 # Screenshots
 bindsym Print exec --no-startup-id maim ~/Pictures/screenshot-$(date +%s).png

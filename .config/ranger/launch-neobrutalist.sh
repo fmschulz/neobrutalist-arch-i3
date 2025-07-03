@@ -4,13 +4,7 @@
 # Set environment variables for better contrast
 export TERM=xterm-256color
 
-# Launch alacritty with specific settings for ranger
+# Launch alacritty with dedicated ranger config
 alacritty \
-    --option font.size=20 \
-    --option font.normal.family="JetBrains Mono" \
-    --option font.normal.style="ExtraBold" \
-    --option colors.primary.foreground='#ffffff' \
-    --option window.padding.x=20 \
-    --option window.padding.y=20 \
-    --title "Ranger - Neobrutalist File Manager" \
+    --config-file ~/.config/alacritty/ranger.toml \
     -e ranger "$@"

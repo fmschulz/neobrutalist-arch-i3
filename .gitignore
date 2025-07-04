@@ -3,6 +3,7 @@
 *.swp
 *.swo
 *~
+.claude
 
 # Backup files
 *.bak

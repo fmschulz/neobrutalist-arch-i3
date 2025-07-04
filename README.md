@@ -6,7 +6,13 @@
 ![i3](https://img.shields.io/badge/i3-v4.22+-white?style=flat-square&logo=i3&logoColor=black)
 ![Arch](https://img.shields.io/badge/Arch-Linux-black?style=flat-square&logo=archlinux&logoColor=white)
 
-## 📸 Design Philosophy
+## 📸 Screenshots
+
+![Neobrutalist i3 Desktop](screenshot-1751600045.png)
+
+*The complete neobrutalist i3 setup featuring terminal greeting, polybar, and themed applications*
+
+## 🎨 Design Philosophy
 
 This configuration embraces **neobrutalist design principles**:
 - **Bold, thick borders** (5px) with stark white focus indicators

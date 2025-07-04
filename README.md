@@ -49,7 +49,7 @@ sudo pacman -S i3-gaps polybar alacritty rofi picom nitrogen \
                ttf-jetbrains-mono otf-font-awesome dunst \
                network-manager-applet blueman xorg-xsetroot \
                redshift pulseaudio pavucontrol playerctl light \
-               maim xclip ranger
+               maim xclip ranger ueberzug
 
 # Recommended packages (enhanced experience)
 sudo pacman -S zathura zathura-pdf-poppler highlight w3m glow \

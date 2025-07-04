@@ -8,9 +8,17 @@
 
 ## 📸 Screenshots
 
-![Neobrutalist i3 Desktop](screenshot-1751600045.png)
+### Desktop Overview
+![Neobrutalist i3 Desktop](images/screenshot-1751600045.png)
+*Complete neobrutalist i3 setup with terminal greeting, polybar, and themed applications*
 
-*The complete neobrutalist i3 setup featuring terminal greeting, polybar, and themed applications*
+### Ranger File Manager with Image Preview
+![Ranger with Image Preview](images/screenshot-1751604912.png)
+*Ranger file manager displaying image previews using ueberzug with neobrutalist theme*
+
+### System Monitor (btop)
+![System Monitor](images/screenshot-1751605006.png)
+*btop system monitor showing CPU, memory, and process information with clean interface*
 
 ## 🎨 Design Philosophy
 
@@ -193,7 +201,8 @@ cd i3-neobrutalist-config
 
 ```bash
 # Copy all configuration files
-cp -r .config/* ~/.config/
+cp -r src/.config/* ~/.config/
+cp src/.bashrc ~/.bashrc
 
 # Make scripts executable
 chmod +x ~/.config/i3/*.sh
@@ -222,28 +231,35 @@ startx
 ## ⚙️ Configuration Structure
 
 ```
-~/.config/
-├── i3/
-│   ├── config              # Main i3 configuration
-│   ├── trackpad-setup.sh   # Touchpad configuration
-│   ├── power-menu.sh       # Power menu script
-│   └── workspace-1.json    # Workspace layout
-├── polybar/
-│   ├── config.ini          # Polybar configuration
-│   └── launch.sh           # Polybar launch script
-├── alacritty/
-│   └── alacritty.toml      # Terminal configuration
-├── rofi/
-│   └── neobrutalist.rasi   # Custom neobrutalist theme
-├── picom/
-│   └── picom.conf          # Compositor settings
-├── nitrogen/
-│   └── nitrogen.cfg        # Wallpaper configuration
-└── ranger/
-    ├── rc.conf             # Ranger configuration
-    ├── scope.sh            # Preview script
-    └── colorschemes/
-        └── neobrutalist.py # Custom neobrutalist theme
+├── images/                     # Screenshots and documentation images
+│   ├── screenshot-1751600045.png  # Desktop overview
+│   ├── screenshot-1751604912.png  # Ranger file manager
+│   └── screenshot-1751605006.png  # System monitor
+├── src/
+│   ├── .bashrc                 # Enhanced bash configuration
+│   └── .config/
+│       ├── i3/
+│       │   ├── config              # Main i3 configuration
+│       │   ├── trackpad-setup.sh   # Touchpad configuration
+│       │   ├── power-menu.sh       # Power menu script
+│       │   └── workspace-1.json    # Workspace layout
+│       ├── polybar/
+│       │   ├── config.ini          # Polybar configuration
+│       │   └── launch.sh           # Polybar launch script
+│       ├── alacritty/
+│       │   └── alacritty.toml      # Terminal configuration
+│       ├── rofi/
+│       │   └── neobrutalist.rasi   # Custom neobrutalist theme
+│       ├── picom/
+│       │   └── picom.conf          # Compositor settings
+│       ├── nitrogen/
+│       │   └── nitrogen.cfg        # Wallpaper configuration
+│       └── ranger/
+│           ├── rc.conf             # Ranger configuration
+│           ├── scope.sh            # Preview script
+│           └── colorschemes/
+│               └── neobrutalist.py # Custom neobrutalist theme
+└── README.md                   # This file
 ```
 
 ## 🎨 Customization

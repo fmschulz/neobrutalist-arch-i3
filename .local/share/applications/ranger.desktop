@@ -4,7 +4,7 @@ Name=ranger
 Comment=File manager with neobrutalist styling and large fonts
 Icon=utilities-file-manager
 Terminal=false
-Exec=alacritty --config-file /home/fschulz/.config/alacritty/ranger.yml -e ranger
+Exec=alacritty --config-file /home/fschulz/.config/alacritty/ranger.toml -e ranger
 Categories=System;FileTools;FileManager;
 MimeType=inode/directory;
 Keywords=File;Manager;Browser;Explorer;Launcher;Vi;Vim;Python;neobrutalist;
@@ -13,4 +13,4 @@ Actions=new-window;
 
 [Desktop Action new-window]
 Name=New Ranger Window
-Exec=alacritty --config-file /home/fschulz/.config/alacritty/ranger.yml -e ranger
+Exec=alacritty --config-file /home/fschulz/.config/alacritty/ranger.toml -e ranger
